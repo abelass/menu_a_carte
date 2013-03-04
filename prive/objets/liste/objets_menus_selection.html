@@ -11,9 +11,15 @@
     [(#GET{n_langues}|>{1}|oui)<h4 class="titrem">[(#VALEUR|traduire_nom_langue)]</h4>]
     <INCLURE{fond=inclure/objets_menus_selection,l=#VALEUR,env,ajax=tableau_so}/>
     #FORMULAIRE_RECHERCHE_OBJETS{#OBJET_DEST,#ID_OBJET_DEST,#VALEUR}  
+    [(#AUTORISER{creer,objets_menu})
+    [(#URL_ECRIRE{selection_objet_edit,new=oui&objet_dest=objets_menu&id_objet_dest=#ENV{id_objet_dest}&id_objet_dest=#ENV{id_objet_dest}&titre=<:objets_menu:titre_nouveau_element:>&statut=publie&lang=#VALEUR}|icone_verticale{<:objets_menu:icone_creer_objets_element:>,objet,new,right})]]
 </BOUCLE_langues>
     <INCLURE{fond=inclure/objets_menus_selection,env,ajax=tableau_so,l='',langue=''}/>
-    #FORMULAIRE_RECHERCHE_OBJETS{#OBJET_DEST,#ID_OBJET_DEST}  
+    #FORMULAIRE_RECHERCHE_OBJETS{#OBJET_DEST,#ID_OBJET_DEST}
+    [(#AUTORISER{creer,objets_menu})
+    [(#URL_ECRIRE{selection_objet_edit,new=oui&objet_dest=objets_menu&id_objet_dest=#ENV{id_objet_dest}&id_objet_dest=#ENV{id_objet_dest}&titre=<:objets_menu:titre_nouveau_element:>&statut=publie}|icone_verticale{<:objets_menu:icone_creer_objets_element:>,objet,new,right})]]  
 <//B_langues>
+
+
 #BOITE_FERMER
 </div>
