@@ -1,0 +1,54 @@
+<paquet
+	prefix="menu_a_carte"
+	categorie="navigation"
+	version="1.0.0"
+	etat="dev"
+	compatibilite="[3.0.5;3.0.*]"
+	logo="prive/themes/spip/images/menu_a_carte-64.png"
+	documentation=""
+	schema="1.0.0" 
+>
+	<!--
+		Paquet généré le 2013-03-04 10:37:37
+		(Vous pouvez bien entendu supprimer ces commentaires) 
+	-->
+
+	<nom>Ménu à la carte</nom>
+
+	<!-- cette balise peut être présente plusieurs fois s'il y a plusieurs auteurs --> 
+	<auteur lien='http://mychacra.net/'>Rainer Müller</auteur>
+
+	<licence>GNU/GPL</licence>
+
+	<!--
+		Exemple de commandes
+		* dependances
+		<necessite nom="saisies" compatibilite="[1.21.0;]" />
+		<utilise nom="saisies" compatibilite="[1.21.0;]" />
+		<lib nom="simplehtmldom" lien="http://chemin_vers_archive.zip" />
+		* pipelines
+		<pipeline nom="autoriser" inclure="menu_a_carte_autorisations.php" />
+		<pipeline nom="insert_head" inclure="menu_a_carte_pipelines.php" />
+		* declarer un pipeline 
+		<pipeline nom="mon_pipeline" action="" />
+		* parents de menus de SPIP :
+				menu_accueil (à éviter), menu_edition, menu_publication,
+				menu_activite, menu_squelette, menu_administration, menu_configuration 
+		<menu nom="menu_a_carte" titre="menu_a_carte:menu_a_carte_titre" parent="menu_edition"  icone="images/menu_a_carte-16.png" />
+		* parents d'onglets... configuration, plugins, statistiques, ... 
+		<onglet nom="menu_a_carte" titre="menu_a_carte:menu_a_carte_titre" parent="configuration" icone="images/menu_a_carte-24.png" />
+	-->
+
+	<necessite nom="saisies" compatibilite="[1.24.0;]" /> 
+
+	<pipeline nom="autoriser" inclure="menu_a_carte_autorisations.php" /> 
+
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/menu_a_carte.php" /> 
+	<pipeline nom="declarer_tables_interfaces" inclure="base/menu_a_carte.php" /> 
+	<pipeline nom="declarer_tables_auxiliaires" inclure="base/menu_a_carte.php" /> 
+	<pipeline nom="affiche_milieu" inclure="menu_a_carte_pipelines.php" /> 
+	<pipeline nom="optimiser_base_disparus" inclure="menu_a_carte_pipelines.php" /> 
+
+	<menu nom="objets_menus" titre="objets_menu:titre_objets_menus" parent="menu_edition" icone="images/objets_menu-16.png" action="objets_menus" /> 
+	<menu nom="objets_menu_creer" titre="objets_menu:icone_creer_objets_menu" parent="outils_rapides" icone="images/objets_menu-new-16.png" action="objets_menu_edit" parametres="new=oui" /> 
+</paquet>

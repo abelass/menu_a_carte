@@ -1,0 +1,46 @@
+[(#AUTORISER{voir,objets_menu,#ID_OBJETS_MENU}|sinon_interdire_acces)]
+<BOUCLE_objets_menu(OBJETS_MENUS){id_objets_menu}{statut==.*}{si #ENV{exec}|=={objets_menu}}>
+[(#BOITE_OUVRIR{[
+	[(#AUTORISER{modifier,objets_menu,#ID_OBJETS_MENU})
+		[(#ID_OBJETS_MENU|afficher_qui_edite{objets_menu}|non)
+			[(#URL_ECRIRE{objets_menu_edit,id_objets_menu=#ID_OBJETS_MENU}|icone_verticale{<:objets_menu:icone_modifier_objets_menu:>,objets_menu,edit,right ajax preload})]
+		]
+		[(#ID_OBJETS_MENU|afficher_qui_edite{objets_menu}|oui)
+			[(#URL_ECRIRE{objets_menu_edit,id_objets_menu=#ID_OBJETS_MENU}|icone_verticale{#ID_OBJETS_MENU|afficher_qui_edite{objets_menu},warning-24,'',right edition_deja ajax preload})]
+		]
+	]
+
+	<h1>[(#RANG). ](#TITRE|sinon{<:info_sans_titre:>})[(#CHEMIN_IMAGE{objets_menu-24.png}|balise_img{objets_menu,cadre-icone})]</h1>
+
+],simple fiche_objet})]
+
+<div class="ajax">
+	#FORMULAIRE_DATER{objets_menu,#ID_OBJETS_MENU}
+</div>
+
+<!--affiche_milieu-->
+
+<div id="wysiwyg">
+<INCLURE{fond=prive/objets/contenu/objets_menu,id=#ID_OBJETS_MENU,id_objets_menu=#ID_OBJETS_MENU,virtuel=oui,ajax=wysiwyg,wysiwyg=1}>
+</div>
+
+<div class="nettoyeur"></div>
+
+[(#AUTORISER{modifier,objets_menu,#ID_OBJETS_MENU})
+	[(#ID_OBJETS_MENU|afficher_qui_edite{objets_menu}|non)
+		[(#URL_ECRIRE{objets_menu_edit,id_objets_menu=#ID_OBJETS_MENU}|icone_verticale{<:objets_menu:icone_modifier_objets_menu:>,objets_menu,edit,right ajax preload})]
+	]
+	[(#ID_OBJETS_MENU|afficher_qui_edite{objets_menu}|oui)
+		[(#URL_ECRIRE{objets_menu_edit,id_objets_menu=#ID_OBJETS_MENU}|icone_verticale{#ID_OBJETS_MENU|afficher_qui_edite{objets_menu},warning-24,'',right edition_deja ajax preload})]
+	]
+]
+
+#PIPELINE{afficher_complement_objet,#ARRAY{args,#ARRAY{type,objets_menu,id,#ID_OBJETS_MENU},data,'<div class="nettoyeur"></div>'}}
+
+#BOITE_FERMER
+[(#EVAL{_AJAX}|oui)
+	<script type="text/javascript">/*<!\\[CDATA\\[*/reloadExecPage('#ENV{exec}','#navigation,#chemin');/*\\]\\]>*/</script>
+]
+</BOUCLE_objets_menu>
+[(#ENV**{exec}|=={objets_menu_edit}|?{#INCLURE{fond=prive/squelettes/contenu/objets_menu_edit,redirect='',env,retourajax=oui},#REM|sinon_interdire_acces})]
+<//B_objets_menu>
