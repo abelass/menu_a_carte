@@ -12,16 +12,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// I
 	'icone_creer_objets_menu' => 'Créer un Menu',
 	'icone_modifier_objets_menu' => 'Modifier ce Menu',
-	'info_1_objets_menu' => 'Un Me"nu"',
+	'info_1_objets_menu' => 'Un élémént de menu"',
 	'info_aucun_objets_menu' => 'Aucun Menu',
-	'info_nb_objets_menus' => '@nb@ Menus',
+	'info_nb_objets_menus' => '@nb@ éléménts de menus',
 	'info_objets_menus_auteur' => 'Les Menus de cet auteur',
 
 	// L
 	'label_date' => 'Date',
 	'label_descriptif' => 'Déscriptif',
 	'label_titre' => 'Titre',
-
+	
+	// N
+	'niveau_menu' => 'Menu niveau',
+	
 	// R
 	'retirer_lien_objets_menu' => 'Retirer ce Menu',
 	'retirer_tous_liens_objets_menus' => 'Retirer tous les Menus',

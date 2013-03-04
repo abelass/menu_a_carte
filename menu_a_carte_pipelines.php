@@ -32,8 +32,6 @@ function menu_a_carte_affiche_milieu($flux) {
 	$texte = "";
 	$e = trouver_objet_exec($flux['args']['exec']);
 
-
-
 	// objets_menus sur les rubriques
 	if (!$e['edition'] AND in_array($e['type'], array('rubrique'))) {
 		$texte .= recuperer_fond('prive/objets/editer/liens', array(
@@ -49,6 +47,14 @@ function menu_a_carte_affiche_milieu($flux) {
 		else
 			$flux['data'] .= $texte;
 	}
+    
+    if(!$e['edition'] AND in_array($e['type'], array('objets_menu'))){
+       $contexte=$flux['data'];
+       $id_objets_menu=$flux['args']['id_objets_menu'];
+       $lang=sql_getfetsel('lang','spip_objets_menus','id_objets_menu='.$id_objets_menu);
+       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>'objets_menu','id_objet_dest'=>$id_objets_menu,'langue'=>array($lang)));
+       $flux['data'] .= $liste;
+    }
 
 	return $flux;
 }
