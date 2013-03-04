@@ -12,12 +12,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// I
 	'icone_creer_objets_menu' => 'Créer un Menu',
 	'icone_modifier_objets_menu' => 'Modifier ce Menu',
-	'info_1_objets_menu' => 'Un élémént de menu"',
+	'info_1_objets_menu' => 'Un élémént',
 	'info_aucun_objets_menu' => 'Aucun Menu',
-	'info_nb_objets_menus' => '@nb@ éléménts de menus',
+	'info_nb_objets_menus' => '@nb@ éléménts',
 	'info_objets_menus_auteur' => 'Les Menus de cet auteur',
 
 	// L
+	'label_ajouter_element' => 'Ajouter un élément',	
 	'label_date' => 'Date',
 	'label_descriptif' => 'Déscriptif',
 	'label_titre' => 'Titre',

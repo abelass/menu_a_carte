@@ -74,4 +74,14 @@ function menu_a_carte_optimiser_base_disparus($flux){
 	return $flux;
 }
 
+function menu_a_carte_formulaire_charger($flux){
+    $form=$flux['args']['form'];
+    if($form == 'recherche_objets'){
+      $flux['data']['label_objet']=_T('objets_menu:label_ajouter_element');
+        
+    }
+
+    return $flux;    
+}
+
 ?>
