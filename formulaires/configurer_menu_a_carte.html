@@ -1,3 +1,10 @@
+#SET{objets,#ARRAY}
+<BOUCLE_objets_liste(DATA){source tableau,#VAL|lister_tables_objets_sql}{par cle}{editable = oui}>
+    [(#VALEUR{principale}|oui)
+        [(#SET{objets,#GET{objets}|array_merge{#ARRAY{#VALEUR{type},#VALEUR{texte_objets}|_T}}})]
+    ]
+</BOUCLE_objets_liste>
+
 <div class="formulaire_spip formulaire_configurer formulaire_#FORM">
 
 	<h3 class="titrem"><:menu_a_carte:cfg_titre_parametrages:></h3>
@@ -10,9 +17,10 @@
 		#ACTION_FORMULAIRE{#ENV{action}}
 
 		<ul>
-			[(#SAISIE{input, exemple,
-				label=<:menu_a_carte:cfg_exemple:>,
-				explication=<:menu_a_carte:cfg_exemple_explication:>})]
+			[(#SAISIE{checkbox,objets_selection,
+                        datas=#GET{objets},
+                        label=<:menu_a_carte:objets_selection:>}
+                        )]
 		</ul>
 
 		<input type="hidden" name="_meta_casier" value="menu_a_carte" />
