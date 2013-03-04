@@ -13,8 +13,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cfg_exemple_explication' => 'Explication de cet exemple',
 	'cfg_titre_parametrages' => 'Paramétrages',
 
+    // O
+    'objets_selection'=>'Objets séléctionables pour les menus',
+
 	// T
-	'titre_page_configurer_menu_a_carte' => 'Paramétrage Menu à la Carte',
+	'titre_page_configurer_menu_a_carte' => 'Menu à la Carte',
 );
 
 ?>
