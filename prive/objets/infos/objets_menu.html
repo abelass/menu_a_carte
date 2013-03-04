@@ -5,24 +5,7 @@
 
 [(#FORMULAIRE_INSTITUER_OBJET{objets_menus,#ID_OBJETS_MENU})]
 
-[(#REM)
 
-	Bouton voir en ligne
-
-]
-<BOUCLE_publie(OBJETS_MENUS){id_objets_menu}>
-	[(#VAL{redirect}
-		|generer_url_action{type=objets_menus&id=#ID_OBJETS_MENU}
-		|parametre_url{var_mode,calcul}
-		|icone_horizontale{<:icone_voir_en_ligne:>,racine})]
-</BOUCLE_publie>
-	[(#AUTORISER{previsualiser,objets_menus,#ID_OBJETS_MENU,'',#ARRAY{statut,#STATUT}})
-		[(#VAL{redirect}
-			|generer_url_action{type=objets_menus&id=#ID_OBJETS_MENU}
-			|parametre_url{var_mode,preview}
-			|icone_horizontale{<:previsualiser:>,preview})]
-	]
-<//B_publie>
 
 </div>
 </BOUCLE_objets_menu>
