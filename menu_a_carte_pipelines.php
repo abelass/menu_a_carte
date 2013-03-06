@@ -52,7 +52,7 @@ function menu_a_carte_affiche_milieu($flux) {
        $contexte=$flux['data'];
        $id_objets_menu=$flux['args']['id_objets_menu'];
        $lang=sql_getfetsel('lang','spip_objets_menus','id_objets_menu='.$id_objets_menu);
-       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>'objets_menu','id_objet_dest'=>$id_objets_menu,'langue'=>array($lang)));
+       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>'objets_menu','id_objet_dest'=>$id_objets_menu,'langue'=>array($lang)),array('ajax'=>'tableau_so'));
        $flux['data'] .= $liste;
     }
 
