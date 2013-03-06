@@ -31,9 +31,10 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 function menu_a_carte_affiche_milieu($flux) {
 	$texte = "";
 	$e = trouver_objet_exec($flux['args']['exec']);
-
+    $type=$e['type']?$e['type']:$flux['args']['exec'];
+ $flux['args']['exec'];
 	// objets_menus sur les rubriques
-	if (!$e['edition'] AND in_array($e['type'], array('rubrique'))) {
+	if (!$e['edition'] AND in_array($type, array('rubrique'))) {
 		$texte .= recuperer_fond('prive/objets/editer/liens', array(
 			'table_source' => 'objets_menus',
 			'objet' => $e['type'],
@@ -48,11 +49,22 @@ function menu_a_carte_affiche_milieu($flux) {
 			$flux['data'] .= $texte;
 	}
     
-    if(!$e['edition'] AND in_array($e['type'], array('objets_menu'))){
+    if(!$e['edition'] AND in_array($type, array('objets_menu')) OR $type=='objets_menu_element'){
        $contexte=$flux['data'];
        $id_objets_menu=$flux['args']['id_objets_menu'];
-       $lang=sql_getfetsel('lang','spip_objets_menus','id_objets_menu='.$id_objets_menu);
-       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>'objets_menu','id_objet_dest'=>$id_objets_menu,'langue'=>array($lang)),array('ajax'=>'tableau_so'));
+       $id_selection_objet=_request('id_selection_objet');       
+       $table_sql = 'spip_objets_menus';
+       if($type!='objets_menu_element'){
+           $lang=sql_getfetsel('lang','spip_objets_menus','id_objets_menu='.$id_objets_menu);
+           $id=$id_objets_menu;
+       }
+       else{
+           $lang=sql_getfetsel('lang','spip_selection_objets','id_selection_objet='.$id_selection_objet);
+           $id=$id_selection_objet;
+           $type=selection_objet;
+       }
+       echo $e['type'];
+       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>$type,'id_objet_dest'=>$id,'langue'=>array($lang)),array('ajax'=>'tableau_so'));
        $flux['data'] .= $liste;
     }
 

@@ -1,0 +1,30 @@
+[(#ID_OBJET|oui)
+	[(#AUTORISER{modifier,selection_objet,#ID_SELECTION_OBJET}|sinon_interdire_acces)]
+][(#ID_OBJET|non)
+	[(#AUTORISER{creer,selection_objet}|sinon_interdire_acces)]
+]
+ 
+#SET{redirect,#ENV{redirect}|sinon{#ENV{lier_trad,#ID_SELECTION_OBJET}|?{#ENV{lier_trad,#ID_SELECTION_OBJET}|generer_url_entite{objets_menu_element},#URL_ECRIRE{objets_menu_element}}}}
+
+<div class='cadre-formulaire-editer'>
+<div class="entete-formulaire">
+	[(#ID_SELECTION_OBJET|oui)
+	[(#GET{redirect}|icone_verticale{Retour,objets_menu_element,'',left retour[(#ENV{retourajax,''}|oui)ajax preload]})]
+	]
+	[
+		[(#ID_OBJETS_MENU|?{<:objets_menu:icone_modifier_objets_menu:>,<:objets_menu:icone_creer_objets_menu:>})]
+		<h1>(#ENV{titre,#INFO_TITRE{selection_objet,#ID_SELECTION_OBJET}|sinon{<:info_sans_titre:>}})</h1>
+	]
+</div>
+
+#SET{redirect,#ENV{redirect,#ID_SELECTION_OBJET|generer_url_entite{objets_menu_element}}}
+[(#ENV{retourajax,''}|oui)
+	#SET{redirect,'javascript:if (window.jQuery) jQuery(".entete-formulaire .retour a").followLink();'}
+	<div class="ajax">
+]
+		[(#FORMULAIRE_EDITER_SELECTION_OBJET{#ENV{id_selection_objet,oui}, #GET{redirect}, #ENV{associer_objet}, #ENV{lier_trad}})]
+[(#ENV{retourajax,''}|oui)
+	</div>
+	<script type="text/javascript">/*<!\[CDATA\[*/reloadExecPage('#ENV{exec}');/*\]\]>*/</script>
+]
+</div>

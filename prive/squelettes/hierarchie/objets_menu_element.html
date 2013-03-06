@@ -1,0 +1,19 @@
+
+<BOUCLE_objets(SELECTION_OBJETS){id_selection_objet}>
+    <BOUCLE_objets_dest(SELECTION_OBJETS){id_objet=#ID_OBJET_DEST}{objet=#OBJET_DEST}>
+    [<a href="(#URL_ECRIRE{objets_menu_element,id_selection_objet=#ID_SELECTION_OBJET})">[(#TITRE|sinon{[(#OBJET|titre_objet_sel{#OBJET|info_objet{#ID_OBJET}})]})]</a>
+]
+    </BOUCLE_objets_dest> 
+      &gt;  
+    </B_objets_dest> 
+<BOUCLE_menu(OBJETS_MENUS){id_objets_menu=#ID_OBJET_DEST}{si #OBJET_DEST|=={objets_menu}}>
+    [<a href="(#URL_ECRIRE{objets_menu,id_objets_menu=#ID_OBJETS_MENU})">[(#TITRE|sinon{[(#OBJET|titre_objet_sel{#OBJET|info_objet{#ID_OBJET}})]})]</a>
+]
+</BOUCLE_menu>
+      &gt;  
+</B_menu>
+[<a href="(#URL_ECRIRE{#ENV{objet}|objet_info{table_objet}})">[(#ENV{objet}|objet_info{texte_objets}|_T)]</a>
+    <strong class="on">[(#TITRE|sinon{[(#OBJET|titre_objet_sel{#OBJET|info_objet{#ID_OBJET}})]})]</strong>
+]
+
+</BOUCLE_objets>

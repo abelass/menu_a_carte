@@ -42,5 +42,5 @@
 	<script type="text/javascript">/*<!\\[CDATA\\[*/reloadExecPage('#ENV{exec}','#navigation,#chemin');/*\\]\\]>*/</script>
 ]
 </BOUCLE_objets_menu>
-[(#ENV**{exec}|=={objets_menu_edit}|?{#INCLURE{fond=prive/squelettes/contenu/objets_menu_edit,redirect='',env,retourajax=oui},#REM|sinon_interdire_acces})]
+[(#ENV**{exec}|=={objets_menu_edit}|?{#INCLURE{fond=prive/squelettes/contenu/selection_objet_edit,redirect='',env,retourajax=oui},#REM|sinon_interdire_acces})]
 <//B_objets_menu>
