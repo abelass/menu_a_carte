@@ -5,47 +5,39 @@
 [(#VAL)]
 [(#BOITE_OUVRIR{
     [(#CHEMIN_IMAGE{menu_a_carte-64.png}|image_reduire{32}|extraire_attribut{src}|balise_img{menu_a_carte,cadre-icone})]
-    <h3  class="titrem"><:objets_menu:niveau_menu:> 1</h3>
+    <h3  class="titrem"><:objets_menu:niveau_menu:> [(#ENV{niveau})]</h3>
     ,'simple personnel infos'})]   
 <BOUCLE_langues(POUR){tableau #ENV**{langue}}>
+#SET{id,selection_objets_#VALEUR|concat{_#ID_OBJET_DEST}}
     [(#GET{n_langues}|>{1}|oui)<h4 class="titrem">[(#VALEUR|traduire_nom_langue)]</h4>]
-    <INCLURE{fond=inclure/objets_menus_selection,l=#VALEUR,env}/>
+    <INCLURE{fond=inclure/objets_menus_selection,l=#VALEUR,env,id=#GET{id},niveau=#ENV{niveau}}/>
     #FORMULAIRE_RECHERCHE_OBJETS{#OBJET_DEST,#ID_OBJET_DEST,#VALEUR}  
     [(#AUTORISER{creer,objets_menu})
     [(#URL_ECRIRE{selection_objet_edit,new=oui&objet_dest=objets_menu&id_objet_dest=#ENV{id_objet_dest}&id_objet_dest=#ENV{id_objet_dest}&titre=<:objets_menu:titre_nouveau_element:>&statut=publie&lang=#VALEUR}|icone_verticale{<:objets_menu:icone_creer_objets_element:>,objet,new,right})]]
     
 <script type="text/javascript">
     $(function() {
-        [(#REM)action rangement]
-        $('#selection_objets_#VALEUR .tr_liste a.select').click(function(){
-          $('#selection_objets_#VALEUR').load($(this).attr("href"));
-           return false;
-        });  
         [(#REM)drag and drop]     
-        $( "#selection_objets_#VALEUR" ).sortable({items:"tr.tr_liste"});
-        $( "#selection_objets_#VALEUR" ).bind("sortupdate", function(event, ui) {
+        $( "##GET{id}" ).sortable({items:"tr.tr_liste"});
+        $( "##GET{id}" ).bind("sortupdate", function(event, ui) {
             var ordre = $(this).sortable('toArray').toString();
-            $('#selection_objets_#VALEUR').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|replace{&amp;,&})]&nouvel_ordre='+ordre);
+            $('##GET{id}').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|replace{&amp;,&})]&nouvel_ordre='+ordre);
         });
     });
     </script>
 </BOUCLE_langues>
-    <INCLURE{fond=inclure/objets_menus_selection,env,l='',langue=''}/>
+#SET{id,selection_objets_no_lang_#ID_OBJET_DEST}
+    <INCLURE{fond=inclure/objets_menus_selection,env,l='',langue='',niveau=#ENV{niveau},id=#GET{id}}/>
     #FORMULAIRE_RECHERCHE_OBJETS{#OBJET_DEST,#ID_OBJET_DEST}
     [(#AUTORISER{creer,objets_menu})
     [(#URL_ECRIRE{selection_objet_edit,new=oui&objet_dest=objets_menu&id_objet_dest=#ENV{id_objet_dest}&id_objet_dest=#ENV{id_objet_dest}&titre=<:objets_menu:titre_nouveau_element:>&statut=publie}|icone_verticale{<:objets_menu:icone_creer_objets_element:>,objet,new,right})]]  
     <script type="text/javascript">
     $(function() {
-        [(#REM)action rangement]
-        $('#selection_objets_no_lang .tr_liste a.select').click(function(){
-          $('#selection_objets_no_lang').load($(this).attr("href"));
-           return false;
-        });  
         [(#REM)drag and drop]     
-        $( "#selection_objets_no_lang" ).sortable({items:"tr.tr_liste"});
-        $( "#selection_objets_no_lang" ).bind("sortupdate", function(event, ui) {
+        $( "##GET{id}" ).sortable({items:"tr.tr_liste"});
+        $( "##GET{id}" ).bind("sortupdate", function(event, ui) {
             var ordre = $(this).sortable('toArray').toString();
-            $('#selection_objets_no_lang').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|replace{&amp;,&})]&nouvel_ordre='+ordre);
+            $('##GET{id}').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|replace{&amp;,&})]&nouvel_ordre='+ordre);
         });
     });
     </script>

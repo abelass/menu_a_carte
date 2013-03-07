@@ -55,7 +55,7 @@ function menu_a_carte_affiche_milieu($flux) {
            $type=selection_objet;
        }
 
-       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>$type,'id_objet_dest'=>$id,'langue'=>array($lang)),array('ajax'=>'tableau_so'));
+       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>$type,'id_objet_dest'=>$id,'langue'=>array($lang),'niveau'=>1),array('ajax'=>'tableau_so'));
        $flux['data'] .= $liste;
     }
 

@@ -1,5 +1,5 @@
 <B_selection>
-<div id="selection_objets[_(#ENV{l,no_lang})]">
+<div id="#ENV{id}">
 <table class='spip liste'>
     [<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{objets_menu:info_1_objets_menu,objets_menu:info_nb_objets_menus}})
               [(#GET{langues}|count|>{1}|oui)
@@ -21,8 +21,23 @@
         compteur_boucle,#COMPTEUR_BOUCLE,
         date,#DATE,
         type_lien,#TYPE_LIEN,       
-        }})</tr>] 
+        }})</tr>]
+     <tr>
+         <td colspan="8">
+           <INCLURE{fond=prive/objets/liste/objets_menus_selection,id_objet_dest=#ID_SELECTION_OBJET,objet_dest='selection_objet',lang=#LISTE{#LANG},env}/>;
+         </td>
+     </tr> 
     </BOUCLE_selection>
     </table>
+<script type="text/javascript">
+    $(function() {
+        [(#REM)action rangement]
+        $('#[(#ENV{id}) ] .tr_liste a.select').click(function(){
+          $('#[(#ENV{id})]').load($(this).attr("href"),{id:'#ENV{id}'});
+           return false;
+        }); 
+    });     
+</script>    
     </div>
 </B_selection>
+
