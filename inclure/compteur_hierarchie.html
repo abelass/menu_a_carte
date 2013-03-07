@@ -1,0 +1,9 @@
+#SET{compteur,#ARRAY}
+<BOUCLE_sel(SELECTION_OBJETS){id_selection_objet=#ENV{id_objet_dest}}>
+#SET{compteur,#GET{compteur}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_OBJET_DEST}}}
+    <BOUCLE_dest(SELECTION_OBJETS){id_selection_objet=#ID_OBJET_DEST}>
+    #SET{compteur,#GET{compteur}|array_merge{#ARRAY{#COMPTEUR_BOUCLE,#ID_OBJET_DEST}}}
+    <BOUCLE_rec(BOUCLE_dest)> </BOUCLE_rec>
+    </BOUCLE_dest>
+</BOUCLE_sel>
+[(#GET{compteur}|count)]

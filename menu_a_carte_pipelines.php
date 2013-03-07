@@ -54,8 +54,8 @@ function menu_a_carte_affiche_milieu($flux) {
            $id=$id_selection_objet;
            $type=selection_objet;
        }
-
-       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>$type,'id_objet_dest'=>$id,'langue'=>array($lang),'niveau'=>1),array('ajax'=>'tableau_so'));
+       $niveau=_request('niveau')?_request('niveau'):1;
+       $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>$type,'id_objet_dest'=>$id,'langue'=>array($lang),'niveau'=>$niveau),array('ajax'=>'tableau_so'));
        $flux['data'] .= $liste;
     }
 

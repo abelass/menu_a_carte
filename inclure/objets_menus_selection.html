@@ -20,13 +20,9 @@
         titre,#TITRE,
         compteur_boucle,#COMPTEUR_BOUCLE,
         date,#DATE,
-        type_lien,#TYPE_LIEN,       
+        type_lien,#TYPE_LIEN,  
+        niveau,#ENV{niveau}     
         }})</tr>]
-     <tr>
-         <td colspan="8">
-           <INCLURE{fond=prive/objets/liste/objets_menus_selection,id_objet_dest=#ID_SELECTION_OBJET,objet_dest='selection_objet',lang=#LISTE{#LANG},env}/>;
-         </td>
-     </tr> 
     </BOUCLE_selection>
     </table>
 <script type="text/javascript">

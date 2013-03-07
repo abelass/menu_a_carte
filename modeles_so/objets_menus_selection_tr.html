@@ -1,11 +1,10 @@
 #CACHE{0}
         <td>
-        <td>
         [(#ENV{compteur_boucle}|!={1}|oui)
-            <div><a class="select" href="[(#URL_ACTION_AUTEUR{ranger,remonter_ordre-[(#ENV{langue})]-[(#ID_SELECTION_OBJET)]-#ORDRE-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection})]#selection_objets"><img src="#CHEMIN{prive/themes/spip/images/fleche-haut.gif}" /></a></div> 
+            <div><a class="select" href="[(#URL_ACTION_AUTEUR{ranger,remonter_ordre-[(#ENV{langue})]-[(#ID_SELECTION_OBJET)]-#ORDRE-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|parametre_url{niveau,#ENV{niveau}})]#selection_objets"><img src="#CHEMIN{prive/themes/spip/images/fleche-haut.gif}" /></a></div> 
             ]
         [(#ENV{compteur_boucle}|!={#ENV{total_boucle}}|oui) 
-            <div><a class="select" href="[(#URL_ACTION_AUTEUR{ranger,descendre_ordre-[(#ENV{langue})]-[(#ID_SELECTION_OBJET)]-#ORDRE-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection})]#selection_objets"><img src="#CHEMIN{prive/themes/spip/images/fleche-bas.gif}" /></a></div> 
+            <div><a class="select" href="[(#URL_ACTION_AUTEUR{ranger,descendre_ordre-[(#ENV{langue})]-[(#ID_SELECTION_OBJET)]-#ORDRE-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|parametre_url{niveau,#ENV{niveau}})]#selection_objets"><img src="#CHEMIN{prive/themes/spip/images/fleche-bas.gif}" /></a></div> 
             ]
             
         </td>
@@ -22,7 +21,7 @@
         <td>
             [(#AUTORISER{modifier,selection_objet,#ID_SELECTION_OBJET})
                 [(#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet}|non)
-                    [(#URL_ECRIRE{objets_menu_element,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{<:objets_menu:icone_modifier_element_menu:>,objets_menu})]
+                    [(#URL_ECRIRE{objets_menu_element,id_selection_objet=#ID_SELECTION_OBJET|concat{&niveau=#ENV{niveau}}}|icone_verticale{<:objets_menu:niveau_menu:>[ (#ENV{niveau})],objets_menu})]
                 ]
             ]
         </td>

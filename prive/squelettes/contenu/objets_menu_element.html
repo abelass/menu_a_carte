@@ -3,14 +3,14 @@
 [(#BOITE_OUVRIR{[
 	[(#AUTORISER{modifier,selection_objet,#ID_OBJET})
 		[(#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet}|non)
-			[(#URL_ECRIRE{selection_objet_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objet,edit,right ajax preload})]
+			[(#URL_ECRIRE{selection_objet_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objets_menu,edit,right ajax preload})]
 		]
 		[(#ID_SELECTION_OBJET|afficher_qui_edite{objet}|oui)
 			[(#URL_ECRIRE{selection_objet_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet},warning-24,'',right edition_deja ajax preload})]
 		]
 	]
 
-	<h1>[(#RANG). ](#TITRE|sinon{<:info_sans_titre:>})[(#CHEMIN_IMAGE{objet-24.png}|balise_img{objet,cadre-icone})]</h1>
+	<h1>[(#RANG). ](#TITRE|sinon{<:info_sans_titre:>})[(#CHEMIN_IMAGE{objets_menu-24.png}|balise_img{objet,cadre-icone})]</h1>
 
 ],simple fiche_objet})]
 
@@ -28,7 +28,7 @@
 
 [(#AUTORISER{modifier,selection_objet,#ID_SELECTION_OBJET})
 	[(#ID_OBJET|afficher_qui_edite{selection_objet}|non)
-		[(#URL_ECRIRE{selection_objet_edit,id_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objet,edit,right ajax preload})]
+		[(#URL_ECRIRE{selection_objet_edit,id_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objets_menu,edit,right ajax preload})]
 	]
 	[(#ID_OBJET|afficher_qui_edite{selection_objet}|oui)
 		[(#URL_ECRIRE{selection_objet_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet},warning-24,'',right edition_deja ajax preload})]
