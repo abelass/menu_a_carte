@@ -21,7 +21,7 @@
         <td>
             [(#AUTORISER{modifier,selection_objet,#ID_SELECTION_OBJET})
                 [(#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet}|non)
-                    [(#URL_ECRIRE{objets_menu_element,id_selection_objet=#ID_SELECTION_OBJET|concat{&niveau=#ENV{niveau}}}|icone_verticale{<:objets_menu:niveau_menu:>[ (#ENV{niveau})],objets_menu})]
+                    [(#URL_ECRIRE{objets_menu_element,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{<:objets_menu:niveau_menu:>[ (#ENV{niveau})],objets_menu})]
                 ]
             ]
         </td>

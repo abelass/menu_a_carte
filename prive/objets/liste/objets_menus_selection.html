@@ -1,5 +1,5 @@
 #CACHE{0}
-#SET{niveau,#INCLURE{fond=inclure/compteur_hierarchie,env}}
+#SET{niveau,#ENV{niveau,#INCLURE{fond=inclure/compteur_hierarchie,env}}}
 <br class="nettoyeur"/>
 <div class="liste-elements selection_objets" id="selection_objets">
 #SET{n_langues,#ENV**{langue}|count}
@@ -22,7 +22,7 @@
         $( "##GET{id}" ).sortable({items:"tr.tr_liste"});
         $( "##GET{id}" ).bind("sortupdate", function(event, ui) {
             var ordre = $(this).sortable('toArray').toString();
-            $('##GET{id}').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|parametre_url{niveau,#GET{niveau}|plus{1}}|parametre_url{id,#GET{id}}|replace{&amp;,&})]&nouvel_ordre='+ordre);
+            $('##GET{id}').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|parametre_url{id,#GET{id}}|replace{&amp;,&})]&nouvel_ordre='+ordre);
         });
     });
     </script>
@@ -38,7 +38,7 @@
         $( "##GET{id}" ).sortable({items:"tr.tr_liste"});
         $( "##GET{id}" ).bind("sortupdate", function(event, ui) {
             var ordre = $(this).sortable('toArray').toString();
-            $('##GET{id}').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|parametre_url{niveau,#GET{niveau}|plus{1}}|parametre_url{id,#GET{id}}|replace{&amp;,&})]&nouvel_ordre='+ordre);
+            $('##GET{id}').load('[(#URL_ACTION_AUTEUR{ranger,nouvel_ordre-#VALEUR-0-0-[(#OBJET_DEST)]-[(#ENV{id_objet_dest})]}|parametre_url{load,inclure/objets_menus_selection}|parametre_url{id,#GET{id}}|replace{&amp;,&})]&nouvel_ordre='+ordre);
         });
     });
     </script>

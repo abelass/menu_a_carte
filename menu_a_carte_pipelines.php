@@ -45,16 +45,17 @@ function menu_a_carte_affiche_milieu($flux) {
        $id_objets_menu=$flux['args']['id_objets_menu'];
        $id_selection_objet=_request('id_selection_objet');       
        $table_sql = 'spip_objets_menus';
+       $niveau='';
        if($type!='objets_menu_element'){
            $lang=sql_getfetsel('lang','spip_objets_menus','id_objets_menu='.$id_objets_menu);
            $id=$id_objets_menu;
+           $niveau=1;
        }
        else{
            $lang=sql_getfetsel('lang','spip_selection_objets','id_selection_objet='.$id_selection_objet);
            $id=$id_selection_objet;
            $type=selection_objet;
        }
-       $niveau=_request('niveau')?_request('niveau'):1;
        $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>$type,'id_objet_dest'=>$id,'langue'=>array($lang),'niveau'=>$niveau),array('ajax'=>'tableau_so'));
        $flux['data'] .= $liste;
     }
