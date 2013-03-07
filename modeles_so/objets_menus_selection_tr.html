@@ -17,7 +17,7 @@
             [((#TYPE_LIEN|nom_type{#OBJET_DEST}))]
         </td>
         <td class="arial1">[(#DATE|affdate)]</td>
-        <td class="arial1"><b style="white-space: nowrap;">N°#ID_OBJET</b></td>
+        <td class="arial1"><b style="white-space: nowrap;">N°[(#ID_OBJET|>{0}|sinon{#ID_SELECTION_OBJET})]</b></td>
         <td>
             [(#AUTORISER{modifier,selection_objet,#ID_SELECTION_OBJET})
                 [(#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet}|non)
