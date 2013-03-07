@@ -40,7 +40,7 @@
 	-->
 
 	<necessite nom="saisies" compatibilite="[1.24.0;]" /> 
-	<necessite nom="selection_objet" compatibilite="[1.6.6;]" /> 
+	<necessite nom="selection_objet" compatibilite="[1.7.1;]" /> 
 
 	
 	<pipeline nom="autoriser" inclure="menu_a_carte_autorisations.php" /> 
