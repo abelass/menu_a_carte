@@ -11,15 +11,6 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 	
-
-/*
- * Un fichier de pipelines permet de regrouper
- * les fonctions de branchement de votre plugin
- * sur des pipelines existants.
- */
-
-
-
 /**
  * Ajout de contenu sur certaines pages,
  * notamment des formulaires de liaisons entre objets
@@ -32,7 +23,7 @@ function menu_a_carte_affiche_milieu($flux) {
 	$texte = "";
 	$e = trouver_objet_exec($flux['args']['exec']);
     $type=$e['type']?$e['type']:$flux['args']['exec'];
- $flux['args']['exec'];
+
 	// objets_menus sur les rubriques
 	if (!$e['edition'] AND in_array($type, array('rubrique'))) {
 		$texte .= recuperer_fond('prive/objets/editer/liens', array(
@@ -63,15 +54,13 @@ function menu_a_carte_affiche_milieu($flux) {
            $id=$id_selection_objet;
            $type=selection_objet;
        }
-       echo $e['type'];
+
        $liste= recuperer_fond('prive/objets/liste/objets_menus_selection',array('objet_dest'=>$type,'id_objet_dest'=>$id,'langue'=>array($lang)),array('ajax'=>'tableau_so'));
        $flux['data'] .= $liste;
     }
 
 	return $flux;
 }
-
-
 /**
  * Optimiser la base de données en supprimant les liens orphelins
  * de l'objet vers quelqu'un et de quelqu'un vers l'objet.
