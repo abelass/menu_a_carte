@@ -1,7 +1,7 @@
 <paquet
 	prefix="menu_a_carte"
 	categorie="navigation"
-	version="1.0.0"
+	version="1.1.0"
 	etat="dev"
 	compatibilite="[3.0.5;3.0.*]"
 	logo="prive/themes/spip/images/menu_a_carte-64.png"
@@ -45,9 +45,11 @@
 	
 	<pipeline nom="autoriser" inclure="menu_a_carte_autorisations.php" /> 
 
+
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/menu_a_carte.php" /> 
 	<pipeline nom="declarer_tables_interfaces" inclure="base/menu_a_carte.php" /> 
 	<pipeline nom="declarer_tables_auxiliaires" inclure="base/menu_a_carte.php" /> 
+	
 	<pipeline nom="affiche_milieu" inclure="menu_a_carte_pipelines.php" /> 
 	<pipeline nom="optimiser_base_disparus" inclure="menu_a_carte_pipelines.php" /> 
 	<pipeline nom="formulaire_charger" inclure="menu_a_carte_pipelines.php" /> 	

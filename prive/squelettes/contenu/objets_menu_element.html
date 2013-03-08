@@ -3,10 +3,10 @@
 [(#BOITE_OUVRIR{[
 	[(#AUTORISER{modifier,selection_objet,#ID_OBJET})
 		[(#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet}|non)
-			[(#URL_ECRIRE{selection_objet_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objets_menu,edit,right ajax preload})]
+			[(#URL_ECRIRE{objets_menu_element_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objets_menu,edit,right ajax preload})]
 		]
 		[(#ID_SELECTION_OBJET|afficher_qui_edite{objet}|oui)
-			[(#URL_ECRIRE{selection_objet_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet},warning-24,'',right edition_deja ajax preload})]
+			[(#URL_ECRIRE{objets_menu_element_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet},warning-24,'',right edition_deja ajax preload})]
 		]
 	]
 
@@ -28,10 +28,10 @@
 
 [(#AUTORISER{modifier,selection_objet,#ID_SELECTION_OBJET})
 	[(#ID_OBJET|afficher_qui_edite{selection_objet}|non)
-		[(#URL_ECRIRE{selection_objet_edit,id_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objets_menu,edit,right ajax preload})]
+		[(#URL_ECRIRE{objets_menu_element_edit,id_objet=#ID_SELECTION_OBJET}|icone_verticale{<:selection_objet:icone_modifier_selection_objet:>,objets_menu,edit,right ajax preload})]
 	]
 	[(#ID_OBJET|afficher_qui_edite{selection_objet}|oui)
-		[(#URL_ECRIRE{selection_objet_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet},warning-24,'',right edition_deja ajax preload})]
+		[(#URL_ECRIRE{objets_menu_element_edit,id_selection_objet=#ID_SELECTION_OBJET}|icone_verticale{#ID_SELECTION_OBJET|afficher_qui_edite{selection_objet},warning-24,'',right edition_deja ajax preload})]
 	]
 ]
 
@@ -42,5 +42,5 @@
 	<script type="text/javascript">/*<!\\[CDATA\\[*/reloadExecPage('#ENV{exec}','#navigation,#chemin');/*\\]\\]>*/</script>
 ]
 </BOUCLE_objet>
-[(#ENV**{exec}|=={selection_objet_edit}|?{#INCLURE{fond=prive/squelettes/contenu/selection_objet_edit,redirect=#URL_ECRIRE{objets_menu_element,id_selection_objet=#ID_SELECTION_OBJET},env,retourajax=oui},#REM|sinon_interdire_acces})]
+[(#ENV**{exec}|=={objets_menu_element_edit}|?{#INCLURE{fond=prive/squelettes/contenu/selection_objet_edit,redirect=#URL_ECRIRE{objets_menu_element,id_selection_objet=#ID_SELECTION_OBJET},env,retourajax=oui},#REM|sinon_interdire_acces})]
 <//B_objet>
