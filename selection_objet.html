@@ -1,0 +1,9 @@
+[(#REM) Choisis le squelettes selon la version spip, les squelettes, inclus puevent être utilisé tels quels, il suffit de renommer le squelette correspondant à votre version]
+
+<BOUCLE_cond(CONDITION){si #PLUGIN{z}}>
+    <BOUCLE_principale(SELECTION_OBJETS) {id_selection_objet}>
+        <INCLURE{fond=structure,env,type=selction_objet,composition=#COMPOSITION} />
+    </BOUCLE_principale>
+</BOUCLE_cond>
+    <INCLURE{fond=selection_objet_defaut,env}/>
+<//B_cond>

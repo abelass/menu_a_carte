@@ -8,7 +8,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// M
 	'menu_a_carte_description' => 'Ce plugin vous permet de créer facilement vos menus',
 	'menu_a_carte_nom' => 'Menu à la carte',
-	'menu_a_carte_slogan' => 'Gérer facilment vos menus',
+	'menu_a_carte_slogan' => 'Gérer facilement vos menus',
 );
 
 ?>

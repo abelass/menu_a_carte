@@ -1,0 +1,24 @@
+<BOUCLE_principale(SELECTION_OBJETS) {id_selection_objet}>
+[(#REM) Fil d'Ariane ]
+<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane(HIERARCHIE){id_article}>
+            [(#ID_PARENT|!={0}|oui)  &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a>]</BOUCLE_ariane>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p>
+
+<div class="contenu-principal">
+    <div class="cartouche">
+         [(#LOGO_SELECTION_OBJETS|image_reduire{200,200})]
+        <h1 class="h1 #EDIT{titre}">#TITRE</h1>
+    </div>
+
+    <div class="surlignable">
+        [<div class="#EDIT{descriptif} texte">(#DESCRIPTIF|image_reduire{500,0})</div>]
+    </div>
+
+
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents}{id_selection_objet})]
+
+</div>
+
+[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+
+</BOUCLE_principale>

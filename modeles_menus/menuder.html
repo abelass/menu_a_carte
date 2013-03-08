@@ -1,22 +1,26 @@
 <div id="nav-container">
-	<B_rubriques>
-	<ul id="nav" class="menuder">
-		<ul>
-			<BOUCLE_rubriques(RUBRIQUES) {racine} {par num titre, titre}>
-			<li>
-				<a href="#URL_RUBRIQUE" class="intitule">[(#TITRE|supprimer_numero|couper{80})]</a>
+    <B_menu>
+    <ul id="nav" class="menuder">
+        <ul>
+            <BOUCLE_menu(SELECTION_OBJETS) {id_objet_dest} {objet_dest=objets_menu}{par ordre}>
+            #SET{objet,#OBJET|sinon{selection_objet}}
+            #SET{id_objet,#ID_OBJET|>{0}|?{#ID_OBJET,#ID_SELECTION_OBJET}}          
+            <li>
+                <a href="#"  class="intitule">[(#TITRE|sinon{[(#GET{objet}|titre_objet_sel{#GET{objet}|info_objet{#GET{id_objet}}})]}|couper{80})]</a>
+                <B_sous_menus>
+                <ul>
+                    <BOUCLE_sous_menus(SELECTION_OBJETS){id_objet_dest=#ID_SELECTION_OBJET}{objet_dest=selection_objet} {par ordre}>
+            #SET{objet,#OBJET|sinon{selection_objet}}
+            #SET{id_objet,#ID_OBJET|>{0}|?{#ID_OBJET,#ID_SELECTION_OBJET}}            
+            <li>
+                    <li><a href="[(#URL|sinon{#GET{id_objet}|generer_url_entite{#GET{objet}}})]" <BOUCLE_test_sousrub(SELECTION_OBJETS){id_objet_dest=#ID_SELECTION_OBJET}{objet_dest=selection_objet} {0,1}>class="daddy"</BOUCLE_test_sousrub>>[(#TITRE|sinon{[(#GET{objet}|titre_objet_sel{#GET{objet}|info_objet{#GET{id_objet}}})]}|couper{80})]</a><BOUCLE_re(BOUCLE_sous_menus)></BOUCLE_re> </li>
+                    </BOUCLE_sous_menus>
+                </ul>
+                </B_sous_menus>
 
-				<B_sous_rubriques>
-				<ul>
-					<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
-					<li><a href="#URL_RUBRIQUE" <BOUCLE_test_sousrub(RUBRIQUES){id_parent}{0,1}>class="daddy"</BOUCLE_test_sousrub>>[(#TITRE|supprimer_numero|couper{80})]</a><BOUCLE_re(BOUCLE_sous_rubriques)></BOUCLE_re>	</li>
-					</BOUCLE_sous_rubriques>
-				</ul>
-				</B_sous_rubriques>
-
-			</li>
-			</BOUCLE_rubriques>
-		</ul>
-	</ul>
-	</B_rubriques>
+            </li>
+            </BOUCLE_menu>
+        </ul>
+    </ul>
+    </B_menu>
 </div>
