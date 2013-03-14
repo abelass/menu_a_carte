@@ -3,6 +3,7 @@
 <br class="nettoyeur"/>
 <div class="liste-elements selection_objets" id="selection_objets">
 #SET{n_langues,#ENV**{langue}|count}
+#SET{tables,#VAL|lister_tables_objets_sql}
 [(#VAL)]
 [(#BOITE_OUVRIR{
     [(#CHEMIN_IMAGE{menu_a_carte-64.png}|image_reduire{32}|extraire_attribut{src}|balise_img{menu_a_carte,cadre-icone})]
@@ -11,7 +12,7 @@
 <BOUCLE_langues(POUR){tableau #ENV**{langue}}>
     #SET{id,selection_objets_#VALEUR|concat{_#ID_OBJET_DEST}}
     [(#GET{n_langues}|>{1}|oui)<h4 class="titrem">[(#VALEUR|traduire_nom_langue)]</h4>]
-    <INCLURE{fond=inclure/objets_menus_selection,l=#VALEUR,env,id=#GET{id},niveau=#GET{niveau}|plus{1}}/>
+    <INCLURE{fond=inclure/objets_menus_selection,env,tables=#GET{tables},l=#VALEUR,env,id=#GET{id},niveau=#GET{niveau}|plus{1}}/>
     #FORMULAIRE_RECHERCHE_OBJETS{#OBJET_DEST,#ID_OBJET_DEST,#VALEUR}  
     [(#AUTORISER{creer,objets_menu})
     [(#URL_ECRIRE{selection_objet_edit,new=oui&objet_dest=#ENV{objet_dest}&id_objet_dest=#ENV{id_objet_dest}&id_objet_dest=#ENV{id_objet_dest}&titre=<:objets_menu:titre_nouveau_element:>&statut=publie&lang=#VALEUR&redirect=[(#URL_ECRIRE{objets_menu_element,id_selection_objet=#ENV{id_selection_objet}})]}|icone_verticale{<:objets_menu:icone_creer_objets_element:>,objets_menu,new,right})]]
@@ -28,7 +29,7 @@
     </script>
 </BOUCLE_langues>
     #SET{id,selection_objets_no_lang_#ID_OBJET_DEST}
-    <INCLURE{fond=inclure/objets_menus_selection,env,l='',langue='',niveau=#GET{niveau}|plus{1},id=#GET{id}}/>
+    <INCLURE{fond=inclure/objets_menus_selection,tables=#GET{tables},env,l='',langue='',niveau=#GET{niveau}|plus{1},id=#GET{id}}/>
     #FORMULAIRE_RECHERCHE_OBJETS{#OBJET_DEST,#ID_OBJET_DEST}
     [(#AUTORISER{creer,objets_menu})
     [(#URL_ECRIRE{selection_objet_edit,new=oui&objet_dest=#ENV{objet_dest}&id_objet_dest=#ENV{id_objet_dest}&id_objet_dest=#ENV{id_objet_dest}&titre=<:objets_menu:titre_nouveau_element:>&statut=publie}|icone_verticale{<:objets_menu:icone_creer_objets_element:>,objets_menu,new,right})]]  
